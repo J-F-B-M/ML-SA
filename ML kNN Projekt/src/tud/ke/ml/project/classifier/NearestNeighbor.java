@@ -146,12 +146,14 @@ public class NearestNeighbor extends ANearestNeighbor {
 					distance += 1;
 				}
 			} else if (obj1 instanceof Double && obj2 instanceof Double) {
-				distance += Math.sqrt(((Double) obj1 * (Double) obj1) + ((Double) obj2 * (Double) obj2));
+				// distance += ((Double) obj1 - (Double) obj2) * ((Double) obj1 - (Double) obj2);
+				distance += Math.pow((Double) obj1 - (Double) obj2, 2);
 			} else {
 				throw new IllegalArgumentException();
 			}
 		}
-		return distance;
+		System.out.println(distance);
+		return Math.sqrt(distance);
 	}
 
 	@Override
