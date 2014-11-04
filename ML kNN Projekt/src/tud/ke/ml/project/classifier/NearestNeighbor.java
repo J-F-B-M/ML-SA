@@ -47,7 +47,8 @@ public class NearestNeighbor extends ANearestNeighbor {
 		Map<Object, Double> map = new HashMap<Object, Double>();
 
 		for (Pair<List<Object>, Double> pair : subset) {
-			map.put(pair.getA().get(getClassAttribute()), pair.getB());
+			Object key = pair.getA().get(getClassAttribute());
+			map.put(key, pair.getB() + (map.containsKey(key) ? map.get(key) : 0));
 		}
 
 		return map;
@@ -55,8 +56,18 @@ public class NearestNeighbor extends ANearestNeighbor {
 
 	@Override
 	protected Map<Object, Double> getWeightedVotes(List<Pair<List<Object>, Double>> subset) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<Object, Double> map = new HashMap<Object, Double>();
+
+		for (Pair<List<Object>, Double> pair : subset) {
+			Object key = pair.getA().get(getClassAttribute());
+			map.put(key, pair.getB() + (map.containsKey(key) ? map.get(key) : 0));
+		}
+
+		for (Entry<Object, Double> entry : map.entrySet()) {
+			entry.setValue(1 / entry.getValue());
+		}
+
+		return map;
 	}
 
 	@Override
@@ -152,7 +163,7 @@ public class NearestNeighbor extends ANearestNeighbor {
 				throw new IllegalArgumentException();
 			}
 		}
-		System.out.println(distance);
+		// System.out.println(distance);
 		return Math.sqrt(distance);
 	}
 
