@@ -57,16 +57,23 @@ public class NearestNeighbor extends ANearestNeighbor {
 	@Override
 	protected Map<Object, Double> getWeightedVotes(List<Pair<List<Object>, Double>> subset) {
 		Map<Object, Double> map = new HashMap<Object, Double>();
+		Double result;
 
+		// Experiment --- SUCCESS!!!
 		for (Pair<List<Object>, Double> pair : subset) {
 			Object key = pair.getA().get(getClassAttribute());
-			map.put(key, pair.getB() + (map.containsKey(key) ? map.get(key) : 0));
+			// If any listing exists (which is a sum of inverse values), I add the current inverse value.
+			map.put(key, 1 / pair.getB() + (map.containsKey(key) ? map.get(key) : 0));
 		}
+		// Experiment_End
 
-		for (Entry<Object, Double> entry : map.entrySet()) {
-			entry.setValue(1 / entry.getValue());
-		}
-
+		// Oddly works for several tests. Even though I compute 1/(2+2) instead of 1/2+1/2 (Simply remove Block-Comment Stars and Autoformat Strg+Shift+F).
+		/*
+		 * for (Pair<List<Object>, Double> pair : subset) { Object key = pair.getA().get(getClassAttribute()); map.put(key, pair.getB() + (map.containsKey(key)
+		 * ? map.get(key) : 0)); }
+		 * 
+		 * for (Entry<Object, Double> entry : map.entrySet()) { entry.setValue(1 / entry.getValue()); }
+		 */
 		return map;
 	}
 
