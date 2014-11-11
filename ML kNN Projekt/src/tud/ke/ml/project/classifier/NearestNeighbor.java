@@ -48,7 +48,7 @@ public class NearestNeighbor extends ANearestNeighbor {
 
 		for (Pair<List<Object>, Double> pair : subset) {
 			Object key = pair.getA().get(getClassAttribute());
-			map.put(key, pair.getB() + (map.containsKey(key) ? map.get(key) : 0));
+			map.put(key, map.get(key) == null ? 1 : map.get(key) + 1);
 		}
 
 		return map;
@@ -59,33 +59,23 @@ public class NearestNeighbor extends ANearestNeighbor {
 		Map<Object, Double> map = new HashMap<Object, Double>();
 		Double result;
 
-		// Experiment --- SUCCESS!!!
 		for (Pair<List<Object>, Double> pair : subset) {
-			Object key = pair.getA().get(getClassAttribute());
-			// If any listing exists (which is a sum of inverse values), I add the current inverse value.
-			map.put(key, 1 / pair.getB() + (map.containsKey(key) ? map.get(key) : 0));
+			Object key = pair.getA().get(getClassAttribute()); // If any listing exists (which is a sum of inverse values), I add the current inverse value.
+			map.put(key, 1 / (pair.getB() + 0.001) + (map.containsKey(key) ? map.get(key) : 0));
 		}
-		// Experiment_End
 
-		// Oddly works for several tests. Even though I compute 1/(2+2) instead of 1/2+1/2 (Simply remove Block-Comment Stars and Autoformat Strg+Shift+F).
-		/*
-		 * for (Pair<List<Object>, Double> pair : subset) { Object key = pair.getA().get(getClassAttribute()); map.put(key, pair.getB() + (map.containsKey(key)
-		 * ? map.get(key) : 0)); }
-		 * 
-		 * for (Entry<Object, Double> entry : map.entrySet()) { entry.setValue(1 / entry.getValue()); }
-		 */
 		return map;
 	}
 
 	@Override
 	protected Object getWinner(Map<Object, Double> votesFor) {
 		Object winner = null;
-		double shortestDistance = Double.MAX_VALUE;
+		double maxValue = Double.MIN_VALUE;
 
 		for (Entry<Object, Double> entry : votesFor.entrySet()) {
-			if (entry.getValue() < shortestDistance) {
+			if (entry.getValue() > maxValue) {
 				winner = entry.getKey();
-				shortestDistance = entry.getValue();
+				maxValue = entry.getValue();
 			}
 		}
 
@@ -120,7 +110,11 @@ public class NearestNeighbor extends ANearestNeighbor {
 
 		List<Pair<List<Object>, Double>> result = new ArrayList<>(getkNearest());
 		Iterator<Pair<List<Object>, Double>> it = sortedSet.iterator();
-		for (int i = 0; i < getkNearest() && it.hasNext(); i++) {
+		for (int i = 0; i < getkNearest()/* && it.hasNext() */; i++) {
+			if (!it.hasNext()) {
+				System.out.println("Too few samples!");
+				break;
+			}
 			result.add(it.next());
 		}
 		return result;
@@ -183,7 +177,7 @@ public class NearestNeighbor extends ANearestNeighbor {
 	@Override
 	protected String[] getMatrikelNumbers() {
 		// FIXME Matrikelnummern eintragen
-		return new String[] { "1766932", "1669152", "" };
+		return new String[] { "1766932", "1669152", "1664571" };
 	}
 
 }
