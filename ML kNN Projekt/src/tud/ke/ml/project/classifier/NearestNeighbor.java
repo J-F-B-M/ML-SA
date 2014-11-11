@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -25,6 +26,8 @@ public class NearestNeighbor extends ANearestNeighbor {
 	protected double[] translation;
 
 	protected List<List<Object>> traindata;
+
+	protected List<Object> testdataForNormalization;
 
 	@Override
 	protected Object vote(List<Pair<List<Object>, Double>> subset) {
@@ -98,7 +101,39 @@ public class NearestNeighbor extends ANearestNeighbor {
 			}
 		});
 
-		for (List<Object> trainingData : this.traindata) {
+		List<List<Object>> normTrain = new LinkedList<>(this.traindata);
+
+		if (isNormalizing()) {
+			this.testdataForNormalization = testdata;
+
+			double[][] norm = normalizationScaling();
+			this.scaling = norm[0];
+			this.translation = norm[1];
+
+			for (int i = 0; i < testdata.size(); i++) {
+				Object elem = testdata.get(i);
+
+				if (elem instanceof String) {
+					continue;
+				} // Early escape
+
+				testdata.set(i, ((Double) elem - this.translation[i]) / (this.scaling[i] + 0.000001));
+			}
+
+			for (List<Object> list : normTrain) {
+				for (int i = 0; i < list.size(); i++) {
+					Object elem = list.get(i);
+
+					if (elem instanceof String) {
+						continue; // Early escape
+					}
+
+					list.set(i, ((Double) elem - this.translation[i]) / (this.scaling[i] + 0.000001));
+				}
+			}
+		}
+
+		for (List<Object> trainingData : normTrain) {
 			double distance;
 			if (getMetric() == 0) {
 				distance = determineManhattanDistance(testdata, trainingData);
@@ -170,8 +205,52 @@ public class NearestNeighbor extends ANearestNeighbor {
 
 	@Override
 	protected double[][] normalizationScaling() {
-		// TODO Auto-generated method stub
-		return null;
+		double[] scaling = new double[this.testdataForNormalization.size()];
+		double[] translation = new double[this.testdataForNormalization.size()];
+
+		double[] min = new double[this.testdataForNormalization.size()];
+		double[] max = new double[this.testdataForNormalization.size()];
+
+		for (int i = 0; i < min.length; i++) {
+			min[i] = Double.POSITIVE_INFINITY;
+			max[i] = Double.NEGATIVE_INFINITY;
+			translation[i] = Double.POSITIVE_INFINITY;
+		}
+
+		List<List<Object>> merged = new LinkedList<>(this.traindata);
+		merged.add(this.testdataForNormalization);
+
+		for (List<Object> list : merged) {
+			for (int i = 0; i < list.size(); i++) {
+				Object elem = list.get(i);
+
+				if (elem instanceof String) {
+					translation[i] = 0;
+					min[i] = 0;
+					max[i] = 1;
+					continue;
+				}
+
+				// elem is a Double
+				Double d = (Double) elem;
+				if (d < translation[i]) {
+					translation[i] = d;
+				}
+
+				if (d < min[i]) {
+					min[i] = d;
+				}
+				if (d > max[i]) {
+					max[i] = d;
+				}
+			}
+		}
+
+		for (int i = 0; i < scaling.length; i++) {
+			scaling[i] = Math.abs(max[i] - min[i]);
+		}
+
+		return new double[][] { scaling, translation };
 	}
 
 	@Override
