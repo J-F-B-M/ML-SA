@@ -1,0 +1,76 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     car-weka.filters.unsupervised.instance.Randomize-S42-weka.filters.unsupervised.instance.RemoveRange-R1-864
+Instances:    864
+Attributes:   7
+              buying
+              maint
+              doors
+              persons
+              lug_boot
+              safety
+              class
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(safety = high) and (lug_boot = big) and (maint = med) and (buying = med) => class=vgood (8.0/2.0)
+(safety = high) and (maint = low) and (buying = med) and (lug_boot = big) => class=vgood (8.0/3.0)
+(safety = high) and (maint = low) and (persons = more) and (buying = low) => class=vgood (9.0/4.0)
+(safety = high) and (persons = 4) and (buying = low) and (lug_boot = big) => class=vgood (9.0/3.0)
+(maint = low) and (buying = med) and (persons = more) and (safety = high) => class=good (6.0/2.0)
+(maint = low) and (safety = med) and (lug_boot = big) and (buying = med) => class=good (7.0/2.0)
+(buying = low) and (maint = low) and (safety = med) and (lug_boot = big) => class=good (7.0/3.0)
+(buying = low) and (maint = med) and (safety = high) and (persons = 4) => class=good (3.0/0.0)
+(safety = high) and (persons = more) and (buying = med) => class=acc (19.0/3.0)
+(safety = med) and (persons = more) and (lug_boot = big) => class=acc (27.0/5.0)
+(safety = high) and (persons = 4) => class=acc (77.0/29.0)
+(safety = med) and (persons = 4) and (lug_boot = big) => class=acc (23.0/5.0)
+(persons = more) and (safety = high) and (maint = low) => class=acc (11.0/1.0)
+(persons = more) and (safety = high) and (maint = high) and (buying = low) => class=acc (4.0/0.0)
+(persons = more) and (safety = med) and (buying = med) => class=acc (18.0/7.0)
+(persons = more) and (safety = high) and (lug_boot = big) and (maint = med) => class=acc (4.0/0.0)
+(safety = med) and (persons = 4) and (buying = low) and (lug_boot = small) => class=acc (7.0/2.0)
+(persons = more) and (safety = high) and (buying = low) and (maint = vhigh) => class=acc (6.0/0.0)
+(safety = med) and (persons = more) and (doors = 3) and (buying = low) => class=acc (5.0/1.0)
+(safety = med) and (persons = 4) and (buying = med) and (maint = low) => class=acc (4.0/1.0)
+ => class=unacc (602.0/35.0)
+
+Number of Rules : 21
+
+
+Time taken to build model: 0.05 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         684               79.1667 %
+Incorrectly Classified Instances       180               20.8333 %
+Kappa statistic                          0.5448
+Mean absolute error                      0.1344
+Root mean squared error                  0.2808
+Relative absolute error                 60.7171 %
+Root relative squared error             84.5468 %
+Total Number of Instances              864     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.871     0.183      0.923     0.871     0.896      0.862    unacc
+                 0.72      0.155      0.553     0.72      0.625      0.804    acc
+                 0.091     0.016      0.188     0.091     0.122      0.794    good
+                 0.387     0.019      0.429     0.387     0.407      0.921    vgood
+Weighted Avg.    0.792     0.165      0.799     0.792     0.792      0.849
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 538  67   8   5 |   a = unacc
+  41 131   4   6 |   b = acc
+   4  21   3   5 |   c = good
+   0  18   1  12 |   d = vgood
+

@@ -1,0 +1,58 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     balance-scale-weka.filters.unsupervised.instance.Randomize-S42-weka.filters.unsupervised.instance.RemovePercentage-P50.0-weka.filters.MultiFilter-Fweka.filters.unsupervised.instance.Randomize -S 42-Fweka.filters.unsupervised.instance.RemovePercentage -P 50.0
+Instances:    312
+Attributes:   5
+              left-weight
+              left-distance
+              right-weight
+              right-distance
+              class
+Test mode:    20-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(right-weight >= 4) and (left-distance <= 3) and (right-distance >= 4) => class=R (35.0/0.0)
+(left-weight <= 1) and (right-weight >= 3) => class=R (32.0/2.0)
+(left-distance <= 1) and (left-weight <= 3) and (right-weight >= 2) => class=R (18.0/0.0)
+(left-weight <= 3) and (right-distance >= 3) and (right-weight >= 3) => class=R (24.0/3.0)
+(left-distance <= 2) and (right-distance >= 3) and (right-weight >= 3) => class=R (7.0/0.0)
+(left-distance <= 1) and (right-distance >= 4) => class=R (6.0/0.0)
+ => class=L (190.0/48.0)
+
+Number of Rules : 7
+
+
+Time taken to build model: 0.02 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         236               75.641  %
+Incorrectly Classified Instances        76               24.359  %
+Kappa statistic                          0.5447
+Mean absolute error                      0.2114
+Root mean squared error                  0.3607
+Relative absolute error                 56.2009 %
+Root relative squared error             83.2381 %
+Total Number of Instances              312     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.836     0.265      0.735     0.836     0.782      0.816    L
+                 0         0          0         0         0          0.559    B
+                 0.792     0.19       0.781     0.792     0.786      0.853    R
+Weighted Avg.    0.756     0.212      0.704     0.756     0.729      0.815
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 122   0  24 |   a = L
+  14   0   8 |   b = B
+  30   0 114 |   c = R
+

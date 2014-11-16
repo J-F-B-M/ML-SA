@@ -1,0 +1,15 @@
+\beamer@endinputifotherversion {3.20pt}
+\beamer@sectionintoc {1}{Aufgabe 1 - Regellernen: Anwendung und Interpretation}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Verwendete Datens\IeC {\"a}tze \& Regellerner}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Vergleich der Ergebnisse: Datens\IeC {\"a}tze}{3}{0}{1}
+\beamer@subsectionintoc {1}{3}{Vergleich der Ergebnisse: Regellerner}{6}{0}{1}
+\beamer@subsectionintoc {1}{4}{Zusammenfassung}{9}{0}{1}
+\beamer@sectionintoc {2}{Aufgabe 2 - Evaluation von Regellernern}{10}{0}{2}
+\beamer@subsectionintoc {2}{1}{Verwendete Datens\IeC {\"a}tze \& Vorgehen}{10}{0}{2}
+\beamer@subsectionintoc {2}{2}{Vergleich der Validierungsmethoden}{11}{0}{2}
+\beamer@subsectionintoc {2}{3}{Unterschiedliche Random Seeds f\IeC {\"u}r 10x10 Cross-Validation}{12}{0}{2}
+\beamer@subsectionintoc {2}{4}{Genauigkeitsmessung auf Testdatensatz}{13}{0}{2}
+\beamer@sectionintoc {3}{Aufgabe 3 - ROC-Kurven}{14}{0}{3}
+\beamer@subsectionintoc {3}{1}{Verwendeter Klassifikationsdatensatz}{14}{0}{3}
+\beamer@subsectionintoc {3}{2}{Vergleich der erzeugten Kurven}{15}{0}{3}
+\beamer@subsectionintoc {3}{3}{Interpretation der Ergebnisse}{19}{0}{3}

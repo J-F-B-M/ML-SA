@@ -1,0 +1,104 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     car
+Instances:    1728
+Attributes:   7
+              buying
+              maint
+              doors
+              persons
+              lug_boot
+              safety
+              class
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(safety = high) and (buying = low) and (lug_boot = big) and (persons = 4) => class=vgood (16.0/4.0)
+(safety = high) and (persons = more) and (buying = low) and (lug_boot = big) => class=vgood (16.0/4.0)
+(safety = high) and (buying = med) and (lug_boot = big) and (maint = low) and (persons = 4) => class=vgood (4.0/0.0)
+(safety = high) and (buying = med) and (maint = med) and (persons = 4) and (lug_boot = big) => class=vgood (4.0/0.0)
+(safety = high) and (lug_boot = med) and (persons = more) and (buying = low) => class=vgood (16.0/7.0)
+(safety = high) and (buying = med) and (maint = low) and (persons = more) and (lug_boot = big) => class=vgood (4.0/0.0)
+(safety = high) and (lug_boot = med) and (buying = med) and (maint = med) and (persons = more) => class=vgood (4.0/1.0)
+(safety = high) and (buying = med) and (maint = med) and (persons = more) and (lug_boot = big) => class=vgood (4.0/0.0)
+(safety = high) and (lug_boot = med) and (persons = 4) and (buying = low) and (doors = 4) => class=vgood (4.0/1.0)
+(maint = low) and (buying = med) and (safety = med) and (lug_boot = big) and (persons = 4) => class=good (4.0/0.0)
+(buying = low) and (maint = low) and (safety = med) and (lug_boot = big) and (persons = more) => class=good (4.0/0.0)
+(buying = low) and (persons = 4) and (maint = med) and (safety = high) => class=good (7.0/1.0)
+(maint = low) and (buying = med) and (safety = high) and (persons = 4) => class=good (8.0/2.0)
+(maint = low) and (buying = med) and (persons = more) and (safety = med) => class=good (12.0/5.0)
+(buying = low) and (maint = med) and (safety = med) and (lug_boot = big) and (persons = 4) => class=good (4.0/0.0)
+(buying = low) and (maint = low) and (persons = 4) and (safety = med) and (lug_boot = big) => class=good (4.0/0.0)
+(maint = low) and (buying = low) and (safety = high) and (persons = 4) => class=good (7.0/1.0)
+(buying = low) and (persons = more) and (maint = med) and (safety = med) => class=good (12.0/5.0)
+(maint = low) and (persons = more) and (buying = low) and (safety = high) => class=good (4.0/1.0)
+(buying = low) and (maint = med) and (persons = more) and (safety = high) => class=good (4.0/1.0)
+(safety = high) and (persons = 4) and (buying = med) => class=acc (32.0/2.0)
+(safety = high) and (persons = more) and (maint = med) => class=acc (28.0/3.0)
+(safety = med) and (persons = 4) and (buying = low) => class=acc (40.0/10.0)
+(safety = med) and (persons = more) and (lug_boot = big) and (maint = med) => class=acc (12.0/0.0)
+(safety = high) and (persons = 4) and (maint = low) => class=acc (24.0/0.0)
+(safety = med) and (persons = 4) and (lug_boot = big) and (buying = med) => class=acc (12.0/0.0)
+(persons = 4) and (safety = high) and (maint = med) => class=acc (24.0/0.0)
+(persons = more) and (safety = med) and (lug_boot = big) and (buying = med) => class=acc (8.0/0.0)
+(safety = med) and (persons = 4) and (maint = med) and (buying = med) => class=acc (8.0/0.0)
+(persons = more) and (safety = high) and (buying = med) and (maint = vhigh) => class=acc (12.0/1.0)
+(safety = med) and (persons = more) and (lug_boot = big) and (maint = low) => class=acc (8.0/0.0)
+(safety = med) and (persons = 4) and (lug_boot = big) and (maint = low) => class=acc (8.0/0.0)
+(persons = more) and (safety = high) and (buying = high) and (maint = low) => class=acc (12.0/1.0)
+(persons = more) and (safety = med) and (lug_boot = med) => class=acc (56.0/23.0)
+(safety = high) and (maint = high) and (buying = high) and (persons = 4) => class=acc (12.0/0.0)
+(persons = more) and (safety = high) and (maint = high) and (buying = med) => class=acc (12.0/1.0)
+(safety = med) and (persons = 4) and (maint = low) and (buying = med) => class=acc (8.0/2.0)
+(persons = more) and (safety = high) and (maint = low) and (buying = vhigh) => class=acc (12.0/1.0)
+(safety = med) and (persons = 4) and (lug_boot = med) and (doors = 4) => class=acc (10.0/3.0)
+(persons = more) and (safety = med) and (buying = low) => class=acc (20.0/6.0)
+(safety = high) and (buying = low) and (persons = 4) => class=acc (14.0/1.0)
+(maint = high) and (buying = high) and (persons = more) and (safety = high) => class=acc (12.0/1.0)
+(safety = med) and (persons = 4) and (doors = 5more) and (lug_boot = med) => class=acc (10.0/3.0)
+(safety = med) and (persons = 4) and (lug_boot = big) and (maint = med) => class=acc (8.0/0.0)
+(persons = more) and (safety = high) and (buying = low) => class=acc (8.0/2.0)
+(safety = med) and (lug_boot = big) and (maint = high) and (buying = high) and (persons = 4) => class=acc (4.0/0.0)
+(persons = more) and (safety = med) and (buying = high) and (maint = high) and (lug_boot = big) => class=acc (4.0/0.0)
+(maint = med) and (persons = more) and (safety = med) and (buying = med) => class=acc (4.0/1.0)
+ => class=unacc (1164.0/7.0)
+
+Number of Rules : 49
+
+
+Time taken to build model: 0.48 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        1494               86.4583 %
+Incorrectly Classified Instances       234               13.5417 %
+Kappa statistic                          0.7216
+Mean absolute error                      0.0846
+Root mean squared error                  0.224 
+Relative absolute error                 36.9616 %
+Root relative squared error             66.2639 %
+Total Number of Instances             1728     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.893     0.056      0.974     0.893     0.931      0.952    unacc
+                 0.867     0.105      0.703     0.867     0.776      0.928    acc
+                 0.565     0.02       0.542     0.565     0.553      0.939    good
+                 0.646     0.019      0.575     0.646     0.609      0.967    vgood
+Weighted Avg.    0.865     0.064      0.881     0.865     0.87       0.947
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+ 1080  101   18   11 |    a = unacc
+   27  333    7   17 |    b = acc
+    0   27   39    3 |    c = good
+    2   13    8   42 |    d = vgood
+

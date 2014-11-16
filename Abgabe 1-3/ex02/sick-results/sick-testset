@@ -1,0 +1,79 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     sick-weka.filters.unsupervised.instance.Randomize-S42-weka.filters.unsupervised.instance.RemovePercentage-P50.0-weka.filters.MultiFilter-Fweka.filters.unsupervised.instance.Randomize -S 42-Fweka.filters.unsupervised.instance.RemovePercentage -P 50.0
+Instances:    1886
+Attributes:   30
+              age
+              sex
+              on thyroxine
+              query on thyroxine
+              on antithyroid medication
+              sick
+              pregnant
+              thyroid surgery
+              I131 treatment
+              query hypothyroid
+              query hyperthyroid
+              lithium
+              goitre
+              tumor
+              hypopituitary
+              psych
+              TSH measured
+              TSH
+              T3 measured
+              T3
+              TT4 measured
+              TT4
+              T4U measured
+              T4U
+              FTI measured
+              FTI
+              TBG measured
+              TBG
+              referral source
+              Class
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(T3 <= 1.1) and (TT4 >= 54) => Class=sick (116.0/16.0)
+(FTI >= 172) and (T3 <= 2.1) and (age <= 55) => Class=sick (5.0/0.0)
+(FTI <= 51) and (TSH <= 4.7) => Class=sick (4.0/0.0)
+(FTI >= 164) and (T3 <= 2.6) and (on thyroxine = f) and (TT4 >= 160) and (TSH <= 0.15) => Class=sick (4.0/0.0)
+ => Class=negative (1757.0/2.0)
+
+Number of Rules : 5
+
+
+Time taken to build model: 0.06 seconds
+
+=== Evaluation on test set ===
+=== Summary ===
+
+Correctly Classified Instances        1849               98.0382 %
+Incorrectly Classified Instances        37                1.9618 %
+Kappa statistic                          0.8421
+Mean absolute error                      0.0259
+Root mean squared error                  0.1311
+Relative absolute error                 22.4718 %
+Root relative squared error             54.5594 %
+Total Number of Instances             1886     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.984     0.078      0.995     0.984     0.989      0.953    negative
+                 0.922     0.016      0.793     0.922     0.853      0.953    sick
+Weighted Avg.    0.98      0.074      0.982     0.98      0.981      0.953
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 1742   28 |    a = negative
+    9  107 |    b = sick
+

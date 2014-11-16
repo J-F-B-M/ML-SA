@@ -1,0 +1,110 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.Prism 
+Relation:     zoo-weka.filters.unsupervised.attribute.Discretize-B5-M-1.0-R14-weka.filters.unsupervised.attribute.Discretize-B5-M-1.0-R14
+Instances:    101
+Attributes:   18
+              animal
+              hair
+              feathers
+              eggs
+              milk
+              airborne
+              aquatic
+              predator
+              toothed
+              backbone
+              breathes
+              venomous
+              fins
+              legs
+              tail
+              domestic
+              catsize
+              type
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Prism rules
+----------
+If milk = true then mammal
+If feathers = true then bird
+If animal = pitviper then reptile
+If animal = seasnake then reptile
+If animal = slowworm then reptile
+If animal = tortoise then reptile
+If animal = tuatara then reptile
+If animal = bass then fish
+If animal = carp then fish
+If animal = catfish then fish
+If animal = chub then fish
+If animal = dogfish then fish
+If animal = haddock then fish
+If animal = herring then fish
+If animal = pike then fish
+If animal = piranha then fish
+If animal = seahorse then fish
+If animal = sole then fish
+If animal = stingray then fish
+If animal = tuna then fish
+If animal = frog then amphibian
+If animal = newt then amphibian
+If animal = toad then amphibian
+If animal = flea then insect
+If animal = gnat then insect
+If animal = honeybee then insect
+If animal = housefly then insect
+If animal = ladybird then insect
+If animal = moth then insect
+If animal = termite then insect
+If animal = wasp then insect
+If legs = '(6.4-inf)' then invertebrate
+If animal = clam then invertebrate
+If animal = crab then invertebrate
+If animal = crayfish then invertebrate
+If animal = lobster then invertebrate
+If animal = seawasp then invertebrate
+If animal = slug then invertebrate
+If animal = starfish then invertebrate
+If animal = worm then invertebrate
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          63               62.3762 %
+Incorrectly Classified Instances         0                0      %
+Kappa statistic                          1     
+Mean absolute error                      0     
+Root mean squared error                  0     
+Relative absolute error                  0      %
+Root relative squared error              0      %
+UnClassified Instances                  38               37.6238 %
+Total Number of Instances              101     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         0          1         1         1          1        mammal
+                 1         0          1         1         1          1        bird
+                 0         0          0         0         0          0.5      reptile
+                 0         0          0         0         0          0.5      fish
+                 1         0          1         1         1          0.75     amphibian
+                 0         0          0         0         0          0.5      insect
+                 0         0          0         0         0          0.5      invertebrate
+Weighted Avg.    1         0          1         1         1          0.992
+
+=== Confusion Matrix ===
+
+  a  b  c  d  e  f  g   <-- classified as
+ 41  0  0  0  0  0  0 |  a = mammal
+  0 20  0  0  0  0  0 |  b = bird
+  0  0  0  0  0  0  0 |  c = reptile
+  0  0  0  0  0  0  0 |  d = fish
+  0  0  0  0  2  0  0 |  e = amphibian
+  0  0  0  0  0  0  0 |  f = insect
+  0  0  0  0  0  0  0 |  g = invertebrate
+

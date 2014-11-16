@@ -1,0 +1,80 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.ConjunctiveRule -N 3 -M 2.0 -P -1 -S 1
+Relation:     zoo-weka.filters.unsupervised.attribute.Discretize-B5-M-1.0-R14-weka.filters.unsupervised.attribute.Discretize-B5-M-1.0-R14
+Instances:    101
+Attributes:   18
+              animal
+              hair
+              feathers
+              eggs
+              milk
+              airborne
+              aquatic
+              predator
+              toothed
+              backbone
+              breathes
+              venomous
+              fins
+              legs
+              tail
+              domestic
+              catsize
+              type
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+
+
+Single conjunctive rule learner:
+--------------------------------
+(milk = true) => type = mammal
+
+Class distributions:
+Covered by the rule:
+mammal	bird	reptile	fish	amphibian	insect	invertebrate	
+1	0	0	0	0	0	0	
+
+Not covered by the rule:
+mammal	bird	reptile	fish	amphibian	insect	invertebrate	
+0	0.341463	0.097561	0.219512	0.04878	0.146341	0.146341	
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          60               59.4059 %
+Incorrectly Classified Instances        41               40.5941 %
+Kappa statistic                          0.4343
+Mean absolute error                      0.1368
+Root mean squared error                  0.2649
+Relative absolute error                 62.4174 %
+Root relative squared error             80.2929 %
+Total Number of Instances              101     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.976     0.017      0.976     0.976     0.976      0.979    mammal
+                 1         0.494      0.333     1         0.5        0.739    bird
+                 0         0          0         0         0          0.611    reptile
+                 0         0          0         0         0          0.675    fish
+                 0         0          0         0         0          0.554    amphibian
+                 0         0          0         0         0          0.675    insect
+                 0         0          0         0         0          0.713    invertebrate
+Weighted Avg.    0.594     0.105      0.462     0.594     0.495      0.807
+
+=== Confusion Matrix ===
+
+  a  b  c  d  e  f  g   <-- classified as
+ 40  1  0  0  0  0  0 |  a = mammal
+  0 20  0  0  0  0  0 |  b = bird
+  1  4  0  0  0  0  0 |  c = reptile
+  0 13  0  0  0  0  0 |  d = fish
+  0  4  0  0  0  0  0 |  e = amphibian
+  0  8  0  0  0  0  0 |  f = insect
+  0 10  0  0  0  0  0 |  g = invertebrate
+

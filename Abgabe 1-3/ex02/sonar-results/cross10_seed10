@@ -1,0 +1,109 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     sonar-weka.filters.unsupervised.instance.Randomize-S42-weka.filters.unsupervised.instance.RemovePercentage-P50.0-weka.filters.MultiFilter-Fweka.filters.unsupervised.instance.Randomize -S 42-Fweka.filters.unsupervised.instance.RemovePercentage -P 50.0
+Instances:    104
+Attributes:   61
+              attribute_1
+              attribute_2
+              attribute_3
+              attribute_4
+              attribute_5
+              attribute_6
+              attribute_7
+              attribute_8
+              attribute_9
+              attribute_10
+              attribute_11
+              attribute_12
+              attribute_13
+              attribute_14
+              attribute_15
+              attribute_16
+              attribute_17
+              attribute_18
+              attribute_19
+              attribute_20
+              attribute_21
+              attribute_22
+              attribute_23
+              attribute_24
+              attribute_25
+              attribute_26
+              attribute_27
+              attribute_28
+              attribute_29
+              attribute_30
+              attribute_31
+              attribute_32
+              attribute_33
+              attribute_34
+              attribute_35
+              attribute_36
+              attribute_37
+              attribute_38
+              attribute_39
+              attribute_40
+              attribute_41
+              attribute_42
+              attribute_43
+              attribute_44
+              attribute_45
+              attribute_46
+              attribute_47
+              attribute_48
+              attribute_49
+              attribute_50
+              attribute_51
+              attribute_52
+              attribute_53
+              attribute_54
+              attribute_55
+              attribute_56
+              attribute_57
+              attribute_58
+              attribute_59
+              attribute_60
+              Class
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(attribute_11 <= 0.1934) and (attribute_45 <= 0.1533) => Class=Rock (33.0/1.0)
+(attribute_17 >= 0.6759) and (attribute_30 >= 0.3917) => Class=Rock (9.0/1.0)
+(attribute_41 >= 0.6121) => Class=Rock (4.0/0.0)
+ => Class=Mine (58.0/4.0)
+
+Number of Rules : 4
+
+
+Time taken to build model: 0.02 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          81               77.8846 %
+Incorrectly Classified Instances        23               22.1154 %
+Kappa statistic                          0.5544
+Mean absolute error                      0.2756
+Root mean squared error                  0.412 
+Relative absolute error                 55.4059 %
+Root relative squared error             82.5952 %
+Total Number of Instances              104     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.75      0.196      0.766     0.75      0.758      0.826    Rock
+                 0.804     0.25       0.789     0.804     0.796      0.826    Mine
+Weighted Avg.    0.779     0.225      0.779     0.779     0.779      0.826
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 36 12 |  a = Rock
+ 11 45 |  b = Mine
+
