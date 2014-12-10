@@ -218,7 +218,7 @@ public class NearestNeighbor extends ANearestNeighbor {
 		}
 
 		List<List<Object>> merged = new LinkedList<>(this.traindata);
-		merged.add(this.testdataForNormalization);
+		//merged.add(this.testdataForNormalization);
 
 		for (List<Object> list : merged) {
 			for (int i = 0; i < list.size(); i++) {
@@ -247,7 +247,8 @@ public class NearestNeighbor extends ANearestNeighbor {
 		}
 
 		for (int i = 0; i < scaling.length; i++) {
-			scaling[i] = Math.abs(max[i] - min[i]);
+			//max-translation because we divide by the translated max, so we should save it. 
+			scaling[i] = Math.abs(max[i] - translation[i]);
 		}
 
 		return new double[][] { scaling, translation };
@@ -255,7 +256,7 @@ public class NearestNeighbor extends ANearestNeighbor {
 
 	@Override
 	protected String[] getMatrikelNumbers() {
-		// FIXME Matrikelnummern eintragen
+		// Joachim Brehmer, Jeannine Endreß, Uli Fahrer
 		return new String[] { "1766932", "1669152", "1664571" };
 	}
 
