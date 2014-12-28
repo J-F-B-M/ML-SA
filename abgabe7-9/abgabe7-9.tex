@@ -1,0 +1,185 @@
+\documentclass[accentcolor=tud10b,colorbacktitle,inverttitle,landscape,german,presentation,t]{tudbeamer}
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{multirow}
+\providecommand\thispdfpagelabel[1]{}
+
+\begin{document}
+
+\title[MLDM: Projekt Aufg 7-9]{Maschinelles Lernen Symbolische Ansätze:\\ Projekt Aufgaben 7-9}
+\subtitle{}
+
+\author[krebs\_pignede\_stark]{Matthias Krebs, Thomas Pignede, Svenja Stark}
+%\institute[]{}
+
+\date{\today}
+
+\begin{titleframe}
+\tableofcontents
+\end{titleframe}
+
+    \section{Aufgabe 7 - Ensemble-Lernen}
+    
+    \subsection{Benutzte Datensätze}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Benutzte Datensätze}
+        \begin{itemize}
+            \item Balance Scale Weight \& Distance Database
+            \item Breast Cancer Data
+            \item Database for Fitting Contact Lenses
+            \item Sonar, Mines vs. Rocks
+            \item Zoo database
+        \end{itemize}
+    \end{frame}
+    
+    \subsection{Regulärer J48, Bagging und AdaBoost}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Regulärer J48, Bagging und AdaBoost}
+        \begin{tabular}[htbp]{l||c|c|c|c|c}
+            Datensatz & balance & breast & lenses & sonar & zoo \\
+            \hline
+            \hline
+            Regulärer J48 & 76.6\% & 75.5\% & 83.3\% & 71.2\% & 92.1\% \\
+            \hline
+            Bagging J48 & 82.2\% & 73.4\% & 79.2\% & 74.5\% & 93.1\% \\
+            \hline
+            AdaBoost J48 & 78.9\% & 69.6\% & 70.8\% & 77.9\% & 95.0\% \\
+            \hline
+            Bagging RandomForest & 82.4\% & 69.2\% & 70.8\% & 86.5\% & 93.1\% \\
+            \hline
+            AdaBoost RandomForest & 78.4\% & 66.4\% & 79.2\% & 82.2\% & 90.1\%
+        \end{tabular}
+    \end{frame}
+    
+    \subsection{Vergleich und Interpretation}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Vergleich und Interpretation}
+        \begin{itemize}
+            \item Als Ensemble-Methode liefert Bagging insgesamt die besten Ergebnisse
+            \item Dabei ist keine klare Struktur erkennbar, ob J48 oder RandomForest der bessere Lernalgorithmus für Bagging ist
+            \item Bei AdaBoost lässt sich ebenfalls nicht definitiv festellen, ob J48 oder RandomForest besser geeignet wäre
+            \item Auch wenn der reguläre J48 nicht überall schlechter ist, scheint insgesamt die Benutzung einer Ensemble-Methode sinnvoll zu sein, um bessere Genauigkeiten zu erzielen
+            \item Alles in allem sieht es aber so aus, dass die erzielte Accuracy der einzelnen Algorithmen stark datenabhängig ist
+        \end{itemize}
+    \end{frame}
+    
+    \section{Aufgabe 8 - Entdecken von Assoziationsregeln}
+    
+    \subsection{Apriori-Algorithmus}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 8 - Entdecken von Assoziationsregeln\\ Apriori-Algorithmus}
+        \begin{itemize}
+            \item Zunächst numerische Attribute ``fnlwgt'' und ``education-num'' entfernen
+            \item Algorithmus Optionen: ``car=true'' (nur Regeln für die Klassenvariable lernen)
+        \end{itemize}
+        \vfill
+        $\rightarrow$ Mehrere Durchläufe des Apriori Regellerners jeweils mit unterschiedlichen Attributmengen und anschließende Analyse der Ergebnisse
+    \end{frame}
+    
+    \subsection{Interessante Zusammenhänge}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 8 - Entdecken von Assoziationsregeln\\ Interessante Zusammenhänge}
+        Wichtigste gefundene Regel basierend auf allen symbolischen Attributen:
+        \begin{itemize}
+            \item marital-status=Never-married ==> class=<=50K conf:(0.95)
+        \end{itemize}
+        Da alle Regeln auf die Condition ``marital-status'' basieren, wird diese entfernt:
+        \begin{itemize}
+            \item relationship=Not-in-family capitalgain=0 ==> class=<=50K conf:(0.92)
+            \item sex=Female capitalgain=0 capitalloss=0 ==> class=<=50K conf:(0.92)
+            \item workclass=Private capitalloss=0 ==> class=<=50K conf:(0.91)
+        \end{itemize}
+        Als nächstes ``capitalgain'' und ``capitalloss'' aufgrund von stark ungleicher Verteilung entfernen:
+        \begin{itemize}
+            \item relationship=Own-child ==> class=<=50K conf:(0.99)
+            \item age=0 ==> class=<=50K conf:(0.98)
+            \item native-country=United-States ==> class=<=50K conf:(0.98)
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 8 - Entdecken von Assoziationsregeln\\ Interessante Zusammenhänge}
+        Aufgrund von schlechter Verteilung Attribut ``native-country'' entfernen:
+        \begin{itemize}
+            \item relationship=Own-child race=White ==> class=<=50K conf:(0.98)
+            \item age=0 race=White ==> class=<=50K conf:(0.98)
+            \item age=0 sex=Male ==> class=<=50K conf:(0.98)
+        \end{itemize}
+        Zum Schluss noch ``age'' und ``relationship'' entfernen, da die letzten Regeln alle darauf basieren:
+        \begin{itemize}
+            \item workclass=Private sex=Female ==> class=<=50K conf:(0.91)
+            \item hoursperweek=1 ==> class=<=50K conf:(0.9)
+        \end{itemize}
+        \vfill
+        $\rightarrow$ Es lassen sich durchaus ``intuitive'' bzw. erwartete Zusammenhänge zwischen Geringverdiener und bestimmten gesellschaftlichen Schichten wie Frauen, Junge, Eltern oder Privatangestellte feststellen, die z.T. auch so in der realen Welt exisitieren können.
+    \end{frame}
+    
+    \section{Aufgabe 9 - Pre-Processing}
+    
+    \subsection{Benutzte Datensätze}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 9 - Pre-Processing\\ Benutzte Datensätze}
+        \begin{itemize}
+            \item 1985 Auto Imports Database
+            \item Iris Plants Database
+            \item Sonar, Mines vs. Rocks
+        \end{itemize}
+    \end{frame}
+    
+    \subsection{Erzielte Genauigkeiten und Baumgrößen}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 9 - Pre-Processing\\ Erzielte Genauigkeiten und Baumgrößen}
+        \begin{tabular}[htbp]{l||c|c|c}
+            Datensatz & J48 Ursprünglich & J48 Diskretisiert & Filtered Classifier \\
+            \hline
+            \hline
+            autos & Acc. 82\%, Size 69 & Acc. 84\%, Size 103 & Acc. 73\%, Size 103 \\
+            \hline
+            iris & Acc. 96\%, Size 9 & Acc. 94\%, Size 4 & Acc. 93\%, Size 4 \\
+            \hline
+            sonar & Acc. 71\%, Size 35 & Acc. 80\%, Size 31 & Acc. 75\%, Size 31 \\
+        \end{tabular}
+    \end{frame}
+    
+    \subsection{Vergleich und Interpretation}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 9 - Pre-Processing\\ Vergleich und Interpretation}
+        \begin{itemize}
+            \item Genauigkeit
+            \begin{itemize}
+                \item J48 auf diskretisierten Daten ist im Schnitt besser als J48 auf den ursprünglichen Daten. Eine mögliche Erklärung wäre, dass die Daten nach dem Pre-Processing bereits einfacher und gruppiert sind, und dadurch leichter ein besseres generalisiertes Modell gelernt werden kann.
+                \item Dagegen hat FilteredClassifier fast immer eine schlechtere Accuracy. Dies könnte daran liegen, dass die Kombination von Pre-Processing und Lern-Algorithmus zu einem einzigen Klassifizierer dazu führt, dass in einem gemeinsamen Schritt sowohl diskretisiert als auch klassifiziert werden muss und dabei die beiden Aufgaben nur mit gewissen Abstrichen zusammen kombiniert werden können.
+            \end{itemize}
+            \item Baumgröße
+            \begin{itemize}
+                \item J48 auf diskretisierten Daten und der FilteredClassifier liefern jeweils immer einen gleich großen Baum.
+                \item Ansonsten ist kein eindeutiges Ergebnis im Bezug zu J48 auf den ursprünglichen Daten erkennbar (resultierender Baum mal größer und mal kleiner).
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+\begin{frame}
+\frametitle{Abschlussüberblick}
+\tableofcontents
+\begin{center}
+\textbf{\Large FRAGEN?}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Gruppenmitglieder}
+Matthias Krebs, 1620340 \vfill
+Thomas Pignede, 1626386 \vfill
+Svenja Stark, 1658147
+\end{frame}
+
+\end{document}
