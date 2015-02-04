@@ -1,0 +1,123 @@
+\documentclass[accentcolor=tud10b,colorbacktitle,inverttitle,landscape,german,presentation,t]{tudbeamer}
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{multirow}
+\providecommand\thispdfpagelabel[1]{}
+
+\begin{document}
+
+\title[MLDM: Projekt Aufg 7-8]{Maschinelles Lernen Symbolische Ansätze:\\ Projekt Aufgaben 7-8}
+\subtitle{}
+
+\author[brehmer\_endreß]{Joachim F. Brehmer-Moltmann, Jeannine Endreß}
+%\institute[]{}
+
+\date{\today}
+
+\begin{titleframe}
+\tableofcontents
+\end{titleframe}
+
+    \section{Aufgabe 7 - Ensemble-Lernen}
+    
+    \subsection{Benutzte Datensätze}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Benutzte Datensätze}
+        \begin{itemize}
+            \item labor
+            \item yeast
+            \item car
+        \end{itemize}
+    \end{frame}
+    
+    \subsection{Regulärer J48, Bagging und AdaBoost}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Regulärer J48, Bagging und AdaBoost}
+        \begin{tabular}[htbp]{l||c|c|c|c|c}
+            Datensatz & balance & breast & lenses & sonar & zoo \\
+            \hline
+            \hline
+            Regulärer J48 & 76.6\% & 75.5\% & 83.3\% & 71.2\% & 92.1\% \\
+            \hline
+            Bagging J48 & 82.2\% & 73.4\% & 79.2\% & 74.5\% & 93.1\% \\
+            \hline
+            AdaBoost J48 & 78.9\% & 69.6\% & 70.8\% & 77.9\% & 95.0\% \\
+            \hline
+            Bagging RandomForest & 82.4\% & 69.2\% & 70.8\% & 86.5\% & 93.1\% \\
+            \hline
+            AdaBoost RandomForest & 78.4\% & 66.4\% & 79.2\% & 82.2\% & 90.1\%
+        \end{tabular}
+    \end{frame}
+    
+    \subsection{Vergleich und Interpretation}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Vergleich und Interpretation}
+        \begin{itemize}
+            \item Als Ensemble-Methode liefert Bagging insgesamt die besten Ergebnisse
+            \item Dabei ist keine klare Struktur erkennbar, ob J48 oder RandomForest der bessere Lernalgorithmus für Bagging ist
+            \item Bei AdaBoost lässt sich ebenfalls nicht definitiv festellen, ob J48 oder RandomForest besser geeignet wäre
+            \item Auch wenn der reguläre J48 nicht überall schlechter ist, scheint insgesamt die Benutzung einer Ensemble-Methode sinnvoll zu sein, um bessere Genauigkeiten zu erzielen
+            \item Alles in allem sieht es aber so aus, dass die erzielte Accuracy der einzelnen Algorithmen stark datenabhängig ist
+        \end{itemize}
+    \end{frame}
+    
+    \section{Aufgabe 8 - Pre-Processing}
+    
+    \subsection{Benutzte Datensätze}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 8 - Pre-Processing\\ Benutzte Datensätze}
+        \begin{itemize}
+            \item 1985 Auto Imports Database
+            \item Iris Plants Database
+            \item Sonar, Mines vs. Rocks
+        \end{itemize}
+    \end{frame}
+    
+    \subsection{Erzielte Genauigkeiten}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 8 - Pre-Processing\\ Erzielte Genauigkeiten}
+        \begin{tabular}[htbp]{l||c|c|c}
+            Datensatz & J48 Ursprünglich & J48 Diskretisiert \\
+            \hline
+            \hline
+            autos & Acc. 82\%, Size 69 & Acc. 84\%, Size 103 \\
+            \hline
+            iris & Acc. 96\%, Size 9 & Acc. 94\%, Size 4 \\
+            \hline
+            sonar & Acc. 71\%, Size 35 & Acc. 80\%, Size 31 \\
+        \end{tabular}
+    \end{frame}
+    
+    \subsection{Vergleich und Interpretation}
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 8 - Pre-Processing\\ Vergleich und Interpretation}
+        \begin{itemize}
+            \item Genauigkeit
+            \begin{itemize}
+                \item J48 auf diskretisierten Daten ist im Schnitt besser als J48 auf den ursprünglichen Daten. Eine mögliche Erklärung wäre, dass die Daten nach dem Pre-Processing bereits einfacher und gruppiert sind, und dadurch leichter ein besseres generalisiertes Modell gelernt werden kann.
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+\begin{frame}
+\frametitle{Abschlussüberblick}
+\tableofcontents
+\begin{center}
+\textbf{\Large FRAGEN?}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Gruppenmitglieder}
+Joachim F. Brehmer-Moltmann, 1766932 \vfill
+Jeannine Endreß, 1669152
+\end{frame}
+
+\end{document}
