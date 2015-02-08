@@ -35,34 +35,117 @@
     \subsection{Regulärer J48, Bagging und AdaBoost}
     
     \begin{frame}[t]
-    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Regulärer J48, Bagging und AdaBoost}
-        \begin{tabular}[htbp]{l||c|c|c|c|c}
-            Datensatz & balance & breast & lenses & sonar & zoo \\
-            \hline
-            \hline
-            Regulärer J48 & 76.6\% & 75.5\% & 83.3\% & 71.2\% & 92.1\% \\
-            \hline
-            Bagging J48 & 82.2\% & 73.4\% & 79.2\% & 74.5\% & 93.1\% \\
-            \hline
-            AdaBoost J48 & 78.9\% & 69.6\% & 70.8\% & 77.9\% & 95.0\% \\
-            \hline
-            Bagging RandomForest & 82.4\% & 69.2\% & 70.8\% & 86.5\% & 93.1\% \\
-            \hline
-            AdaBoost RandomForest & 78.4\% & 66.4\% & 79.2\% & 82.2\% & 90.1\%
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Datensatz labor}
+        \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+        \hline 
+        Anzahl Iterationen & 1 & 2 & 3 & 4 & 5 \\ 
+        \hline 
+        J48 & 73.7\% & / & / & / & / \\ 
+        \hline 
+        AdaBoost & 73.7\% & 77.2\% & 82.5\% & 80.7\% & 82.5\% \\ 
+        \hline 
+        Bagging & 71.9\% & 78.9\% & 77.2\% & 80.7\% & 82.5\% \\ 
+        \hline 
+        Random Forests & 84.2\% & 80.7\% & 84.2\% & 86.0\% & 87.7\% \\ 
+        \hline 
         \end{tabular}
+        
+        \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+        \hline 
+        Anzahl Iterationen & 6 & 7 & 8 & 9 & 10 & 1000 \\ 
+        \hline 
+        J48 & / & / & / & / & / & /\\ 
+        \hline 
+        AdaBoost & 86.0\% & 84.2\% & 87.7\% & 87.7\% & 89.5\% & 87.7\% \\ 
+        \hline 
+        Bagging & 82.5\% & 86.0\% & 86.0\% & 84.2\% & 86.0\% & 86.0\% \\ 
+        \hline 
+        Random Forests & 87.7\% & 87.7\% & 87.7\% & 87.7\% & 87.7\% & 89.5\% \\ 
+        \hline 
+        \end{tabular} 
+    \end{frame}  
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Datensatz yeast}
+        \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+        \hline 
+        Anzahl Iterationen & 1 & 2 & 3 & 4 & 5 \\ 
+        \hline 
+        J48 & 56.0\% & / & / & / & / \\ 
+        \hline 
+        AdaBoost & 56.0\% & 46.6\% & 53.8\% & 54.6\% & 56.3\% \\ 
+        \hline 
+        Bagging & 50.3\% & 51.2\% & 55.3\% & 57.1\% & 56.9\% \\ 
+        \hline 
+        Random Forests & 47.8\% & 50.1\% & 53.4\% & 54.0\% & 56.4\% \\ 
+        \hline 
+        \end{tabular}
+        
+        \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+        \hline 
+        Anzahl Iterationen & 6 & 7 & 8 & 9 & 10 & 1000\\ 
+        \hline 
+        J48 & / & / & / & / & / & / \\ 
+        \hline 
+        AdaBoost & 54.3\% & 55.9\% & 55.4\% & 56.9\% & 56.4\% & 60.0\% \\ 
+        \hline 
+        Bagging & 58.0\% & 59.0\% & 59.4\% & 59.6\% & 59.1\% & 62.1\% \\ 
+        \hline 
+        Random Forests & 56.7\% & 57.7\% & 57.5\% & 58.8\% & 58.8\% & 62.1\% \\ 
+        \hline 
+        \end{tabular} 
+    \end{frame}   
+    
+    \begin{frame}[t]
+    \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Datensatz car}
+        \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+        \hline 
+        Anzahl Iterationen & 1 & 2 & 3 & 4 & 5 \\ 
+        \hline 
+        J48 & 92.4\% & / & / & / & / \\ 
+        \hline 
+        AdaBoost & 92.4\% & 92.4\% & 94.7\% & 93.1\% & 95.5\% \\ 
+        \hline 
+        Bagging & 90.9\% & 91.6\% & 92.1\% & 92.5\% & 92.8\% \\ 
+        \hline 
+        Random Forests & 83.6\% & 87.5\% & 90.0\% & 91.4\% & 91.4\% \\ 
+        \hline 
+        \end{tabular}
+        
+        \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+        \hline 
+        Anzahl Iterationen & 6 & 7 & 8 & 9 & 10 & 1000\\ 
+        \hline 
+        J48 & / & / & / & / & / & / \\ 
+        \hline 
+        AdaBoost & 95.1\% & 96.1\% & 95.5\% & 96.2\% & 96.1\% & 97.2\% \\ 
+        \hline 
+        Bagging & 92.4\% & 92.5\% & 92.9\% & 93.2\% & 93.1\% & 93.7\% \\ 
+        \hline 
+        Random Forests & 91.9\% & 92.4\% & 92.6\% & 93.2\% & 93.6\% & 95.0\% \\ 
+        \hline 
+        \end{tabular} 
     \end{frame}
     
     \subsection{Vergleich und Interpretation}
     
     \begin{frame}[t]
     \frametitle{Aufgabe 7 - Ensemble-Lernen\\ Vergleich und Interpretation}
-        \begin{itemize}
-            \item Als Ensemble-Methode liefert Bagging insgesamt die besten Ergebnisse
-            \item Dabei ist keine klare Struktur erkennbar, ob J48 oder RandomForest der bessere Lernalgorithmus für Bagging ist
-            \item Bei AdaBoost lässt sich ebenfalls nicht definitiv festellen, ob J48 oder RandomForest besser geeignet wäre
-            \item Auch wenn der reguläre J48 nicht überall schlechter ist, scheint insgesamt die Benutzung einer Ensemble-Methode sinnvoll zu sein, um bessere Genauigkeiten zu erzielen
-            \item Alles in allem sieht es aber so aus, dass die erzielte Accuracy der einzelnen Algorithmen stark datenabhängig ist
-        \end{itemize}
+		\begin{itemize}
+			\item Für alle Methoden gilt allgemein, dass mehr Iterationen eine höhere Genauigkeit bedeuten
+			\item Bei geringen Iterationszahlen kann es bei AdaBoost und Bagging zu großen Schwankungen kommen
+			\item Random Forests wird mit mehr Bäumen immer genauer, aber nie schlechter
+			\item Random Forests ist immer am schnellsten, Bagging am zweitschnellsten und AdaBoost am langsamsten
+			\begin{itemize}
+				\item Random Forests ist zwischen 2x und 6x so schnell, je nach Datensatz
+			\end{itemize}
+			\item Für hohe Iterationszahlen sind alle Methoden besser als J48
+			\item Die erzielte Accuracy und Verarbeitungsgeschwindigkeit scheinen stark datenabhängig zu sein
+			\begin{itemize}
+				\item Die Anzahl der Daten spielt dabei anscheinend eine untergeordnete Rolle
+			\end{itemize}			
+			\item Für schnelle Ergebnisse ist Random Forests am geeignetsten
+		\end{itemize}
     \end{frame}
     
     \section{Aufgabe 8 - Pre-Processing}
@@ -72,9 +155,9 @@
     \begin{frame}[t]
     \frametitle{Aufgabe 8 - Pre-Processing\\ Benutzte Datensätze}
         \begin{itemize}
-            \item 1985 Auto Imports Database
-            \item Iris Plants Database
-            \item Sonar, Mines vs. Rocks
+            \item autos
+            \item iris
+            \item sonar
         \end{itemize}
     \end{frame}
     
