@@ -256,8 +256,8 @@ public class NearestNeighbor extends ANearestNeighbor {
 
 	@Override
 	protected String[] getMatrikelNumbers() {
-		// Joachim Brehmer, Jeannine Endreﬂ, Uli Fahrer
-		return new String[] { "1766932", "1669152", "1664571" };
+		// Joachim Brehmer, Jeannine Endreﬂ
+		return new String[] { "1766932", "1669152" };
 	}
 
 }
